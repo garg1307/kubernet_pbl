@@ -33,7 +33,7 @@ pipeline {
                   }
         stage('push docker image') {
             steps {
-                   sh 'docker push rishab1101/kubernet-pbl:$BUILD_NUMBER' 
+                   sh 'docker push rishabh1101/kubernet-pbl:$BUILD_NUMBER' 
                   }     
                   }
 } }
