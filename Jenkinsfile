@@ -39,7 +39,7 @@ pipeline {
                   }
         stage('Deploy') {
             steps {
-                   sh 'docker run -p 8081:8081 rishab1101/kubernet-pbl:latest'
+                   sh 'docker run -p 8081:8081 rishabh1101/kubernet-pbl:$BUILD_NUMBER'
                   }     
                   }
 } }
