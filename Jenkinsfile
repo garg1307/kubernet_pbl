@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                   script {
-                         def dockerHome = tool 'docker'
+                         def dockerHome = tool 'docker_latest'
                          env.PATH = "${dockerHome}/bin:${env.PATH}"
                          }
                   echo 'Building..'
