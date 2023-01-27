@@ -19,7 +19,7 @@ const Chat = require('./models/chat')
 
 
 
-mongoose.connect('mongodb://65.0.76.27:27017/twitter')
+mongoose.connect('mongodb://65.0.76.27:27017/kubernet-pbl')
 .then(()=>{
     console.log("db connected");
 })
