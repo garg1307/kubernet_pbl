@@ -3,11 +3,15 @@ pipeline {
     tools {
      nodejs '16.9.1'
            }
+     environment {
+       DOCKERHUB_CREDENTIALS = credentials('docker-id')
+                 }
     stages {
         stage('Build') {
             steps {
                   echo 'Building..'
                   sh 'npm install'
+                  sh 'docker.build -t rishab1101/kubernet-pbl:$BUILD_NUMBER .'
                   }
                   }
 //        stage('Tests') {
@@ -18,28 +22,14 @@ pipeline {
 //                          }                 
 //                  }
 //                  }
-        stage('Build and push docker image') {
+        stage('login to dockerhub') {
             steps {
-                script {
-                    def dockerImage = docker.build("garg1307/kubernet_pbl:master")
-                    docker.withRegistry('', 'docker-id') {
-                        dockerImage.push('master') }
-                       }
+                   sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                   }
                   }
-        stage('Deploy to remote docker host') {
-            environment {
-                DOCKER_HOST_CREDENTIALS = credentials('docker-id')}
+        stage('push docker image') {
             steps {
-                script {
-//                  sh 'docker login -u $DOCKER_HOST_CREDENTIALS_USR -p $DOCKER_HOST_CREDENTIALS_PSW 127.0.0.1:2375'
-                    sh 'docker pull garg1307/kubernet_pbl:master'
-                    sh 'docker stop kubernet_pbl'
-                    sh 'docker rm kubernet_pbl'
-                    sh 'docker rmi garg1307/kubernet_pbl:current'
-                    sh 'docker tag garg1307/kubernet_pbl:master garg1307/kubernet_pbl:current'
-                    sh 'docker run -d --name kubernet_pbl -p 80:3000 garg1307/kubernet_pbl:current'
-                        }
-            }
-            }
+                   sh 'docker push rishab1101/kubernet-pbl:$BUILD_NUMBER' 
+                  }     
+                  }
 } }
