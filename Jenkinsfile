@@ -15,7 +15,7 @@ pipeline {
                          }
                   echo 'Building..'
                   sh 'npm install'
-                  sh 'docker.build -t rishab1101/kubernet-pbl:$BUILD_NUMBER .'
+                  sh 'docker build -t rishab1101/kubernet-pbl:$BUILD_NUMBER .'
                   }
                   }
 //        stage('Tests') {
