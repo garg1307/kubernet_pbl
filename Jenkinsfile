@@ -8,6 +8,7 @@ pipeline {
             steps {
                   echo 'Building..'
                   sh 'npm install'
+                  sh 'mvn clean install'
                   }
                   }
         stage('Tests') {
