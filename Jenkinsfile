@@ -35,6 +35,8 @@ pipeline {
             steps {
                    sh 'docker tag rishab1101/kubernet-pbl:$BUILD_NUMBER rishabh1101/kubernet-pbl:$BUILD_NUMBER'
                    sh 'docker push rishabh1101/kubernet-pbl:$BUILD_NUMBER' 
+                   sh 'docker pull rishabh1101/kubernet-pbl'
+                   sh 'docker run -p 8081:8081 rishabh1101/kubernet-pbl'
                   }     
                   }
 } }
