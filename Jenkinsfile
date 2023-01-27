@@ -28,7 +28,7 @@ pipeline {
 //                  }
         stage('login to dockerhub') {
             steps {
-                   sh 'docker login -u AWS https://089546056955.dkr.ecr.ap-south-1.amazonaws.com -p $(aws ecr get-login-password --region ap-south-1)'
+                   sh 'docker login -u rishabh1101 -p rishabh123'
                   }
                   }
         stage('push docker image') {
