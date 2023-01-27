@@ -9,6 +9,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                  script {
+                         def dockerHome = tool 'docker'
+                         env.PATH = "${dockerHome}/bin:${env.PATH}"
+                         }
                   echo 'Building..'
                   sh 'npm install'
                   sh 'docker.build -t rishab1101/kubernet-pbl:$BUILD_NUMBER .'
