@@ -18,14 +18,14 @@ pipeline {
                   sh 'docker build -t rishab1101/kubernet-pbl:$BUILD_NUMBER .'
                   }
                   }
-//        stage('Tests') {
-//            steps {
-//                   script {
-//                        echo 'Testing..'
-//                       sh 'npm test'    
-//                          }                 
-//                  }
-//                  }
+        stage('Tests') {
+            steps {
+                   script {
+                       echo 'Testing..'
+                       sh 'npm test'    
+                          }                 
+                  }
+                  }
         stage('Deploy') {
             steps {
                    sh 'docker login -u rishabh1101 -p rishabh123'
