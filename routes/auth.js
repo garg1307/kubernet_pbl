@@ -3,10 +3,6 @@ const router = express.Router();
 const User = require('../models/user');
 const passport = require('passport');
 
-router.get('/check', function (req, res) {
-    res.send('{ "response": "Authorization Successfull" }');
-  });
-
 router.get('/register', (req, res) => {
     res.render('auth/signup');
 })

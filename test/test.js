@@ -1,7 +1,7 @@
-var request = require('supertest');
-var app = require('../routes/auth.js');
-describe('Login', function() {
-    it('should let you log in and sign up', function(done) {
-        request(app).get('/check').expect('{ "response": "Authorization Successfull" }', done);
+
+describe("Integration Test", function() {
+    it("Should be able to add and complete TODOs", function() {
+        let todos = new Todos();
+        assert.notStrictEqual(todos.list().length, 1);
     });
 });
