@@ -26,20 +26,12 @@ pipeline {
 //                          }                 
 //                  }
 //                  }
-        stage('login to dockerhub') {
-            steps {
-                   sh 'docker login -u rishabh1101 -p rishabh123'
-                  }
-                  }
-        stage('Push docker image') {
-            steps {
-                   sh 'docker tag rishab1101/kubernet-pbl:$BUILD_NUMBER rishabh1101/kubernet-pbl:$BUILD_NUMBER'
-                   sh 'docker push rishabh1101/kubernet-pbl:$BUILD_NUMBER' 
-                  }     
-                  }
         stage('Deploy') {
             steps {
-                   sh 'docker run -p 8081:8081 rishabh1101/kubernet-pbl:$BUILD_NUMBER'
+                   sh 'docker login -u rishabh1101 -p rishabh123'
+                   sh 'docker tag rishab1101/kubernet-pbl:$BUILD_NUMBER rishabh1101/kubernet-pbl:$BUILD_NUMBER'
+                   sh 'docker push rishabh1101/kubernet-pbl:$BUILD_NUMBER' 
+//                   sh 'docker run -p 8081:8081 rishabh1101/kubernet-pbl:$BUILD_NUMBER'
                   }     
                   }
 } }
