@@ -22,7 +22,7 @@ pipeline {
             steps {
                    script {
                        echo 'Testing..'
-                       sh 'npm test '    
+                       sh 'mocha test '    
                           }                 
                   }
                   }
